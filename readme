@@ -1,0 +1,23 @@
+Project: Browser stats pull
+
+The objective:
+We want to automate a process that fetches and stores web browser usage data over the past few years for countries with a lower middle income.
+
+Resources:
+- The following URI gives a json response containing countries that appear in this list of lower middle income countries:
+  http://api.worldbank.org/countries/?incomeLevel=LMC&format=json
+- The following URI downloads a csv file which contains browser usage stats for the major browsers:
+  http://gs.statcounter.com/chart.php?statType_hidden=browser&region_hidden=AL&granularity=yearly&statType=Browser&fromYear=2008&toYear=2012&csv=1
+  Only one country is returned per response.
+  The URI contains the query parameter 'region_hidden' which accepts a 2 digit ISO code. This dictates the country returned.
+- Coding language is of your preference 
+- It's preferred the database be MySQL, but you can use others if you have to.
+
+
+Solution:
+browser_data_to_mysql.py(main program)
+utils.py(functions for main program)
+Usage:
+1. Create a database 'country_browserdb' with table 'country_browser' in mysql
+2. Run browser_data_to_mysql.py 
+3. The will formated data will insert into table 'country_browser' 
